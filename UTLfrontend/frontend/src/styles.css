@@ -1,0 +1,1521 @@
+/* ============== UTL School — Global Styles (Light & Dark) ============== */
+/* ---------- Base / Variables ---------- */
+@font-face { font-family:"Golos Text"; src:url("/GolosText-Variable.ttf") format("ttf"); font-weight:400 900; font-style:normal; font-display:swap }
+:root { --white:#ffffff; --graphite:#111317; --graphite-2:#161a20; --blackish:#0b0f12; --mint:#A8D3CF; --mint-dark:#7bbdb6; --mint-ink:#0f1e1d; --soft:#f6f8f9; --ink:#111; --ink-2:#495057; --border:#e8eeef }
+*{ box-sizing:border-box }
+body{ margin:0; font-family:"Golos Text","PT Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); background:var(--white); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; transition:background-color .25s ease,color .25s ease }
+.container{ max-width:1140px; margin:0 auto; padding:0 20px }
+.section{ padding:72px 0 }
+.section--soft{ background:var(--soft) }
+.h1{ font-size:44px; line-height:1.1; margin:0 0 16px }
+.h2{ font-size:32px; line-height:1.2; margin:0 0 12px }
+.p{ font-size:18px; line-height:1.6; margin:0 0 10px; color:var(--ink-2) }
+
+
+
+
+/* ---------- NAV ---------- */
+.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.9); backdrop-filter:saturate(160%) blur(3px); border-bottom:1px solid #e9ecef }
+.nav__inner{ display:flex; align-items:center; gap:16px; padding:10px 0; flex-wrap:nowrap }
+.brand{ display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px }
+.brand__logo{ width:132px; height:48px; border-radius:8px; background-image:url('../src/assets/logoheader.png'); background-size:contain; background-position:left center; background-repeat:no-repeat; display:inline-block }
+.nav__links{ flex:1 1 auto; min-width:0; display:flex; align-items:center; gap:clamp(10px,1.5vw,18px); flex-wrap:nowrap; white-space:nowrap; overflow:visible }
+.nav__link{ color:#111; text-decoration:none; font-size:clamp(13px,.95vw,14px); padding:8px 10px; border-radius:8px; line-height:1 }
+.nav__link:hover{ background:#f1f3f5 }
+.nav__link--active{ background:var(--mint); color:var(--mint-ink); text-decoration:none }
+.nav__actions{ margin-left:10px; display:inline-flex; align-items:center; gap:8px }
+
+/* ---------- HERO ---------- */
+.hero{ min-height:92vh; display:flex; align-items:center; border-bottom:1px solid #eef2f3; position:relative }
+.hero__bgVideo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; z-index:0 }
+.hero__inner{ display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; width:100%; position:relative; z-index:1 }
+.hero__content{ flex:1 1 520px }
+.hero__image{ flex:1 1 400px; display:flex; justify-content:center }
+.hero__video{ width:100%; max-width:760px; aspect-ratio:16/9; object-fit:cover; border-radius:12px; display:block; box-shadow:0 18px 50px rgba(0,0,0,.18) }
+.hero .p{ color:#111 } /* описание в hero — чёрным */
+html.theme-dark .hero .p{ color:#e9f5f3 }
+
+/* ---------- CTA ---------- */
+.cta{ appearance:none; border:none; cursor:pointer; background:var(--mint); color:var(--mint-ink); padding:14px 20px; border-radius:14px; font-weight:800; letter-spacing:.2px; line-height:1; box-shadow:0 6px 16px rgba(168,211,207,.35),0 2px 0 rgba(0,0,0,.06) inset; transform:translateY(0); transition:.18s transform ease,.18s box-shadow ease,.18s background ease; text-decoration:none }
+.cta:hover{ background:var(--mint-dark); box-shadow:0 10px 22px rgba(123,189,182,.42),0 2px 0 rgba(0,0,0,.05) inset; transform:translateY(-1px) }
+.cta:active{ transform:translateY(0) }
+.cta--ghost{ background:#111; color:#fff }
+.cta--ghost:hover{ background:#000 }
+.hero__cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px }
+.cta--mega{ padding:22px 64px; font-size:20px; border-radius:16px }
+@media (max-width:640px){ .cta--mega{ width:100%; text-align:center } }
+
+/* ---------- GRID & Cards ---------- */
+.grid{ display:grid; gap:18px }
+.grid--3{ grid-template-columns:repeat(3,minmax(0,1fr)) }
+.grid--2{ grid-template-columns:repeat(2,minmax(0,1fr)) }
+@media (max-width:980px){ .grid--3{ grid-template-columns:1fr 1fr } .grid--2{ grid-template-columns:1fr } }
+@media (max-width:640px){ .grid--3{ grid-template-columns:1fr } }
+.card{ background:#fff; border:1px solid #e6ebed; border-radius:18px; padding:18px; box-shadow:0 2px 10px rgba(16,24,40,.04); transition:background-color .25s ease,color .25s ease,border-color .25s ease }
+.card__title{ font-weight:800; margin:6px 0 8px }
+.card__tag{ font-size:12px; background:#eef6f6; color:#244d4a; padding:4px 8px; border-radius:999px; display:inline-block }
+.card .p{ color:#111 } /* описание в карточках темнее */
+
+/* ========== ABOUT (галерея слева, текст справа; меньше воздуха) ========== */
+#about.section{ padding-bottom:36px }
+@media (max-width:980px){ #about.section{ padding-bottom:28px } }
+
+/* фото левее, текст правее; больше расстояние между колонками */
+.aboutGrid{ display:grid; grid-template-columns:1.35fr minmax(300px,0.85fr); gap:clamp(40px,7vw,96px); align-items:start }
+.aboutGrid>div:first-child{ margin-left:-12px }
+.aboutGrid>div:last-child{ margin-right:-12px }
+@media (max-width:980px){ .aboutGrid{ grid-template-columns:1fr; gap:16px } .aboutGrid>div:first-child,.aboutGrid>div:last-child{ margin:0 } }
+
+.about__gallery{ display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:clamp(140px,18vw,170px); gap:12px }
+.about__img{ border-radius:18px; background-position:center; background-size:cover; box-shadow:0 16px 40px rgba(16,24,40,.10),0 0 0 1px #e8eeef inset; position:relative; overflow:hidden }
+.about__img--a{ grid-row:1 / span 2; grid-column:1/2; min-height:100%; background-image:url('/src/assets/classroom.webp') }
+.about__img--b{ grid-row:1; grid-column:2; background-image:url('/src/assets/classroom2.webp') }
+.about__img--c{ grid-row:2; grid-column:2; background-image:linear-gradient(180deg,rgba(168,211,207,.08),rgba(168,211,207,0)),url('/src/assets/admin_room.webp'); background-position:right center }
+
+/* факты — чуть дальше друг от друга */
+.about__facts{ display:flex; flex-direction:column; gap:16px }
+.about__facts .card{ min-height:78px }
+
+/* ---------- TESTIMONIALS ---------- */
+.sliderBtns{ display:flex; gap:8px; margin-top:8px }
+.iconBtn{ appearance:none; border:1px solid #e6ebed; background:#fff; cursor:pointer; width:36px; height:36px; border-radius:10px; font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; transition:.15s ease; box-shadow:0 1px 2px rgba(16,24,40,.06) }
+.iconBtn:hover{ transform:translateY(-1px); box-shadow:0 4px 10px rgba(16,24,40,.08) }
+.scroll-x{ display:flex; gap:14px; overflow:auto; padding-bottom:6px; scroll-snap-type:x mandatory; scrollbar-width:none }
+.scroll-x::-webkit-scrollbar{ display:none }
+.scroll-x .card{ min-width:320px; scroll-snap-align:start }
+.tcard{ background:#fff; border:1px solid #e6ebed; border-radius:18px; padding:18px; box-shadow:0 6px 22px rgba(16,24,40,.06); transition:box-shadow .2s ease,transform .2s ease }
+.tcard:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(16,24,40,.1) }
+.testimonial__name{ margin-top:10px; font-weight:800; color:#0e2c2a }
+.tcard--video{ position:relative; border:2px solid #e1e8ea; padding-top:28px; border-radius:16px; overflow:hidden }
+.tcard--video::before{ content:""; position:absolute; left:0; right:0; top:0; height:28px; background:linear-gradient(180deg,#f5f7f8,#eef3f5); border-bottom:1px solid #e1e8ea; border-radius:16px 16px 0 0 }
+.tcard--video::after{ content:""; position:absolute; top:8px; left:12px; width:8px; height:8px; border-radius:50%; background:#ff5f57; box-shadow:14px 0 0 #febc2e,28px 0 0 #28c840; opacity:.9 }
+
+/* ---------- HOW (equal heights + visuals) ---------- */
+.how .howGrid{ display:grid; grid-template-columns:minmax(260px,420px) 1fr; gap:clamp(28px,5vw,56px); align-items:stretch }
+@media (max-width:980px){ .how .howGrid{ grid-template-columns:1fr; gap:18px } }
+.how .stepList{ align-self:stretch; height:100%; display:flex; flex-direction:column; gap:12px }
+.how .stepBtn{ display:flex; align-items:center; gap:12px; background:#fff; border:1px solid #edf1f2; border-radius:14px; padding:12px 14px; cursor:pointer; transition:.2s ease; box-shadow:0 2px 8px rgba(16,24,40,.04) }
+.how .stepBtn:hover{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(16,24,40,.08) }
+.how .stepBtn.active{ border-color:rgba(168,211,207,.6); box-shadow:0 10px 26px rgba(168,211,207,.22); outline:4px solid rgba(168,211,207,.18); background:linear-gradient(180deg,#ffffff 0%,#f4fbfa 100%) }
+.how .stepIndex{ width:28px; height:28px; border-radius:999px; flex:0 0 28px; display:flex; align-items:center; justify-content:center; font-weight:800; background:var(--mint); color:var(--mint-ink); box-shadow:0 4px 14px rgba(168,211,207,.35) }
+.how .stepTitle{ font-size:16px; font-weight:700; color:#0e2c2a }
+.sceneWrap{ border-radius:18px; padding:22px; background:radial-gradient(120% 100% at 0% 0%,rgba(168,211,207,.18),rgba(168,211,207,.06) 60%),linear-gradient(180deg,#ffffff 0%,#f6fbf9 100%); border:1px solid #edf1f2; box-shadow:0 10px 30px rgba(16,24,40,.06); display:flex; align-items:center; justify-content:center }
+@media (min-width:981px){ .how .sceneWrap{ height:var(--how-left-h) } .how .scene{ height:100%; display:flex; align-items:center } }
+.how .fadeWrap{ position:relative; width:100% }
+.how .fadeScene{ position:absolute; inset:0; opacity:0; transform:translateY(6px); pointer-events:none; transition:opacity .28s ease,transform .28s ease }
+.how .fadeScene.active{ opacity:1; transform:none; pointer-events:auto }
+.how .sceneWrap.sceneWrap--plain{ padding:0; background:transparent; border:none; box-shadow:none }
+.how .signupVideo{ width:100%; max-width:820px; aspect-ratio:16/6; border-radius:16px; overflow:hidden; border:1px solid #edf1f2; box-shadow:0 8px 20px rgba(16,24,40,.06); margin:0 auto }
+.how .signupVideo>video{ width:100%; height:100%; display:block; object-fit:cover }
+.how .dual--compact{ display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:start; justify-items:center }
+.scene--split{ position:relative }
+.logiSplit{ position:relative; display:grid; grid-template-columns:1.1fr 1fr; gap:24px; align-items:center }
+.logiAura{ position:absolute; inset:0; background:radial-gradient(40% 70% at 25% 20%,rgba(168,211,207,.18),transparent 60%),radial-gradient(50% 80% at 80% 60%,rgba(168,211,207,.14),transparent 70%); filter:blur(8px); pointer-events:none }
+.logiPhoto{ position:relative; height:100%; min-height:0; border-radius:18px; overflow:hidden; background:#0f1418 center/cover no-repeat; box-shadow:0 16px 48px rgba(0,0,0,.24); outline:1px solid rgba(168,211,207,.22); background-position:center 36%; background-size:118% auto }
+.photoBadge{ position:absolute; top:12px; left:12px; padding:6px 10px; border-radius:999px; background:var(--mint); color:var(--mint-ink); font-weight:900; font-size:12px; letter-spacing:.2px; box-shadow:0 8px 22px rgba(168,211,207,.35) }
+.logiChat{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px; align-self:center; transform:translateY(-10px) }
+.bubble{ --d:0s; max-width:92%; padding:12px 14px; border-radius:18px; line-height:1.28; font-weight:600; position:relative; animation:bubble-pop .55s ease both; animation-delay:var(--d); word-break:break-word }
+.bubble b{ color:var(--mint); font-weight:800 }
+.bubble.in{ align-self:flex-start; background:#fff; color:#2e5552; border:1px solid rgba(168,211,207,.35); box-shadow:0 8px 20px rgba(0,0,0,.08) }
+.bubble.in::after{ content:""; position:absolute; left:-6px; bottom:0; width:12px; height:12px; background:#fff; border-left:1px solid rgba(168,211,207,.35); border-bottom:1px solid rgba(168,211,207,.35); transform:rotate(45deg) translateY(-6px); border-bottom-left-radius:3px }
+.bubble.out{ align-self:flex-end; background:linear-gradient(180deg,var(--mint) 0%,var(--mint-dark) 100%); color:var(--mint-ink); border:none; box-shadow:0 10px 26px rgba(168,211,207,.25) }
+.bubble.out::after{ content:""; position:absolute; right:-6px; bottom:0; width:12px; height:12px; background:var(--mint-dark); transform:rotate(45deg) translateY(-6px); border-bottom-right-radius:3px }
+@keyframes bubble-pop{ 0%{opacity:0;transform:translateY(8px) scale(.96)} 60%{opacity:1;transform:translateY(0) scale(1.02)} 100%{transform:translateY(0) scale(1)} }
+@media (max-width:980px){ .how .fadeScene{ position:static; opacity:1; transform:none; pointer-events:auto } .how .signupVideo{ max-width:none; aspect-ratio:16/9 } .how .sceneWrap{ height:auto } }
+@media (max-width:900px){ .logiSplit{ grid-template-columns:1fr; gap:16px } .logiPhoto{ min-height:240px } .bubble{ max-width:100% } }
+
+/* HOW — ограничение размера сертификата */
+.how .certificateCard{ max-height:calc(var(--how-left-h,520px) - 24px); overflow:hidden; display:grid; place-items:center; max-width:clamp(420px,44vw,680px); margin:0 auto }
+.how .certificateCard img{ width:100%; height:auto; max-height:clamp(260px,32vw,360px); object-fit:contain }
+
+/* форматы */
+.how .format{ display:grid; place-items:center; gap:8px }
+.how .format__frame{ width:clamp(260px,94%,360px); aspect-ratio:360/260; border-radius:14px }
+.how .format__svg{ width:100%; height:100%; display:block }
+.how .format__label{ font-weight:700; color:#0e2c2a }
+.how .format__card{ background:linear-gradient(180deg,#e9f5f3,#f6fbf9); border:1px solid rgba(168,211,207,.45); box-shadow:0 6px 18px rgba(16,24,40,.06), inset 0 0 0 1px rgba(255,255,255,.6); display:grid; place-items:center; padding:16px }
+.how .format__badge{ font-weight:900; letter-spacing:1px; color:var(--mint-ink); background:var(--mint); padding:8px 20px; border-radius:999px; box-shadow:0 4px 12px rgba(168,211,207,.45) }
+.how .format__dots{ display:flex; gap:8px; margin-top:12px }
+.how .format__dots span{ width:8px; height:8px; border-radius:50%; background:var(--mint); opacity:.55; display:inline-block; animation:zoomDot 1.6s ease-in-out infinite }
+.how .format__dots span:nth-child(2){ animation-delay:.18s }
+.how .format__dots span:nth-child(3){ animation-delay:.36s }
+.format__svg--offline{ transform:scale(1.06); transform-origin:center }
+.format__card--shrink{ transform:scale(.82); transform-origin:center }
+@supports not (aspect-ratio:1){ .how .format__frame{ height:260px } }
+
+/* ---------- FAQ (заполнение + правый оффер) ---------- */
+.faqWrap.withRouteBG{ position:relative }
+.faqWrap .routeContent{ position:relative; z-index:1 }
+.faqGrid{ display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:start }
+@media (max-width:980px){ .faqGrid{ grid-template-columns:1fr } }
+
+/* базовый аккордеон */
+details{ border:1px solid #edf1f2; border-radius:14px; padding:12px 14px; background:#fff; transition:border-color .2s,box-shadow .2s }
+details+details{ margin-top:10px }
+summary{ cursor:pointer; font-weight:700; list-style:none; display:flex; align-items:center; gap:10px }
+summary::-webkit-details-marker{ display:none }
+details[open]{ box-shadow:0 8px 20px rgba(16,24,40,.06); border-color:#dfeaed }
+
+/* иконка FAQ→INFO */
+.faqItem .faqIcon{ width:22px; height:22px; display:inline-grid; place-items:center; flex:0 0 22px }
+.faqItem .ico{ width:22px; height:22px; display:block }
+.faqItem .ico--info{ display:none }
+details[open] .ico--faq{ display:none }
+details[open] .ico--info{ display:block }
+
+/* правый блок-оффер (альтернативная тема) */
+.faqAside{ border:1px solid #e8eeef; background:linear-gradient(180deg,#fff,#f7fbfa); border-radius:16px; padding:18px; box-shadow:0 10px 24px rgba(16,24,40,.08) }
+.faqAside__title{ font-weight:900; margin:0 0 8px }
+.faqAside--alt{ background:radial-gradient(120% 120% at 0% 0%, rgba(168,211,207,.18), rgba(168,211,207,.06) 60%), linear-gradient(180deg,#ffffff 0%, #f6fbf9 100%); border-color:#d9ece9; box-shadow:0 12px 30px rgba(16,24,40,.08), inset 0 0 0 1px rgba(255,255,255,.6) }
+.faqAside--slim{ justify-self:end; width:clamp(280px,36vw,420px); margin-left:auto; padding:16px }
+.faqAside--slim .faqAside__title{ font-size:18px; margin-bottom:8px }
+
+/* продающий оффер + «золотые горы» */
+.promoStat{ display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center; border:1px solid #d9ece9; background:linear-gradient(180deg,#ffffff 0%,#f6fbf9 100%); border-radius:14px; padding:12px 14px; box-shadow:0 8px 18px rgba(16,24,40,.06),inset 0 0 0 1px rgba(255,255,255,.6) }
+.promoStat__num{ font-weight:900; font-size:34px; line-height:1; letter-spacing:.5px; background:linear-gradient(90deg,var(--mint),#7bbdb6); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 1px 0 rgba(255,255,255,.6) }
+.promoStat__text{ color:#0e2c2a; font-weight:700 }
+.promoLead{ color:#0e2c2a; margin:12px 0 6px }
+.promoNote{ margin-top:8px; font-size:12px; color:#4a6a67 }
+.promoStat--compact{ padding:10px 12px }
+.promoStat--compact .promoStat__num{ font-size:28px }
+.promoStat--compact .promoStat__text{ font-size:14px }
+.promoLead--small{ font-size:14px }
+.seoList{ margin:8px 0 0 18px; padding:0; color:#0e2c2a }
+.seoList li{ margin:6px 0 }
+.seoList li::marker{ color:#7bbdb6 }
+.seoList--compact{ margin:8px 0 0 0; padding-left:18px }
+.seoList--compact li{ font-size:14px; margin:6px 0 }
+
+/* «золотой» градиент суммы */
+.gold{ background:linear-gradient(90deg,#d4af37,#f8d76e); -webkit-background-clip:text; background-clip:text; color:transparent }
+
+/* срочность/дефицит */
+.promoUrgency{ display:flex; align-items:center; gap:10px; margin-top:10px; padding:10px 12px; border:1px dashed #ffe3a3; background:linear-gradient(180deg,#fffef7,#fff9ea); border-radius:12px }
+.moneyBadge{ font-weight:900; font-size:12px; letter-spacing:.4px; padding:6px 10px; border-radius:999px; background:linear-gradient(90deg,#ffd166,#f8b500); color:#5a3b00; box-shadow:0 6px 16px rgba(248,181,0,.25) }
+.promoUrgency__text{ font-weight:700; color:#5a3b00; font-size:13px }
+.promoCTA{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px }
+.promoCTA .note{ font-size:11px; color:#4a6a67 }
+
+/* ---------- Form ---------- */
+.formActions{ display:flex; gap:12px; align-items:center; margin-top:8px }
+.formActions--right{ justify-content:flex-end }
+.hintOk{ color:#16a34a }
+#contact .p, label.p{ color:#111 } /* светлая тема — чёрный */
+
+/* ---------- FOOTER ---------- */
+.footer{ position:relative; background:var(--soft); background-image:none; color:#0e2c2a; padding:100px 0; margin-top:60px; overflow:hidden; border-top:1px solid var(--border) }
+.footer__inner{ position:relative; z-index:1; display:flex; align-items:stretch; justify-content:space-between; gap:48px; flex-wrap:wrap }
+.footer__left{ flex:0 1 38%; display:flex; flex-direction:column; align-items:flex-start; gap:12px }
+.footer__map{ position:relative; width:100%; min-height:260px; border-radius:18px; overflow:hidden; background:#fff; box-shadow:0 10px 30px rgba(16,24,40,.08),0 0 0 1px #e8eeef inset }
+.mapBadge{ position:absolute; top:12px; left:12px; background:var(--mint); color:var(--mint-ink); padding:6px 10px; border-radius:999px; font-weight:800; box-shadow:0 8px 20px rgba(168,211,207,.35); z-index:2 }
+.footer__address{ font-size:18px; font-weight:600; line-height:1.5; margin-top:12px; color:#2b4b48 }
+.footer__contacts{ flex:1 1 56%; display:flex; flex-direction:column; justify-content:center; gap:26px; color:#2b4b48 }
+.footer__title{ font-size:28px; font-weight:900; margin:0; color:#0e2c2a }
+.footer__links{ display:flex; gap:22px; flex-wrap:wrap }
+.footer__icon{ width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#fff; border:1px solid #e2eceb; box-shadow:0 3px 10px rgba(16,24,40,.06); transition:.25s ease }
+.footer__icon svg{ width:30px; height:30px; fill:#0e2c2a }
+.footer__icon:hover{ background:#fff; transform:translateY(-2px); border-color:#dfeaed }
+.footer__phone a{ font-size:32px; font-weight:900; letter-spacing:.2px; color:#0e2c2a; text-decoration:none }
+.footer__phone a:hover{ color:var(--mint-dark) }
+.footer__legal{ margin-top:6px; font-size:14px; color:#4a6a67; opacity:.9 }
+@media (max-width:900px){ .footer__inner{ gap:28px } .footer__left,.footer__contacts{ flex:1 1 100% } .footer__map{ min-height:220px } .footer__phone a{ font-size:26px } }
+
+/* ---------- Burger / Drawer ---------- */
+.burger{ display:none; margin-left:8px; width:38px; height:38px; border-radius:10px; border:1px solid #e9ecef; background:#fff; cursor:pointer }
+.burger__bar{ width:18px; height:2px; background:#111; margin:0 auto; border-radius:2px; transition:transform .2s,opacity .2s }
+.burger__bar+.burger__bar{ margin-top:4px }
+@media (max-width:980px){ .nav__links{ display:none } .burger{ display:inline-flex; align-items:center; justify-content:center } }
+.drawer{ position:fixed; inset:60px 0 auto 0; background:#fff; border-bottom:1px solid #e9ecef; z-index:55; padding:10px 0; display:none }
+.drawer--open{ display:block }
+.drawer__links{ display:flex; flex-direction:column; gap:6px; padding:8px 20px }
+.drawer__link{ padding:10px 12px; border-radius:10px; text-decoration:none; color:#111 }
+.drawer__link:hover{ background:#f5f7f8 }
+
+/* ---------- Animations ---------- */
+@keyframes flyIn{ from{opacity:0;transform:translateY(40px) scale(.95)} to{opacity:1;transform:none} }
+.card-animate{ opacity:0 }
+.card-visible.card-animate{ animation:flyIn .8s ease-out forwards }
+.card-delay-0{ animation-delay:.1s }
+.card-delay-1{ animation-delay:.3s }
+.card-delay-2{ animation-delay:.5s }
+@keyframes spin{ to{ transform:rotate(1turn) } }
+
+/* ---------- FAB (mobile) ---------- */
+.fab{ position:fixed; right:16px; bottom:16px; z-index:60; display:none }
+@media (max-width:768px){ .fab{ display:block } }
+
+/* =============================================
+   PRICING (Light) — описания чёрным
+   ============================================= */
+.pricing{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:16px }
+.plan{ position:relative; background:linear-gradient(180deg,#ffffff 0%,#f6fbf9 100%); color:#0e2c2a; border-radius:20px; border:1px solid #e8eeef; box-shadow:0 10px 28px rgba(16,24,40,.06); padding:22px; overflow:hidden; transform:translateY(0); transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease; display:flex; flex-direction:column }
+.plan:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(16,24,40,.10); border-color:#dfeaed }
+.plan__head{ display:flex; flex-direction:column; gap:10px }
+.kicker{ font-size:12px; letter-spacing:.4px; color:#3a3a3a }
+.plan__title{ margin:0; font-size:22px; font-weight:900; letter-spacing:.3px; color:#0e2c2a }
+.price{ display:flex; align-items:baseline; gap:8px }
+.price__now{ font-weight:900; font-size:28px; color:#0e2c2a }
+.price__label{ font-size:14px; color:#333 }
+.plan__badges{ display:flex; flex-wrap:wrap; gap:8px }
+.badge{ display:inline-block; padding:6px 10px; border-radius:999px; background:#eef7f5; color:#2b4b48; font-size:12px; border:1px solid #d3ebe7 }
+.features{ margin:18px 0 0; padding:0 0 0 18px; color:#111 }
+.features li{ margin:6px 0 }
+.features li::marker{ color:#7bbdb6 }
+.plan__foot{ margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:12px }
+.plan .cta{ box-shadow:0 8px 20px rgba(168,211,207,.25) }
+.note{ font-size:12px; color:#6a8b88 }
+.plan--featured{ border-color:#cfe4e1; box-shadow:0 12px 36px rgba(16,24,40,.12),0 0 0 1px rgba(255,255,255,.40) inset; transform:translateY(-2px) }
+.plan--featured:hover{ transform:translateY(-6px) }
+.plan__ribbon{ position:absolute; top:12px; right:12px; background:linear-gradient(90deg,var(--mint) 0%,#7bbdb6 100%); color:var(--mint-ink); font-weight:900; font-size:12px; padding:6px 12px; border-radius:999px; box-shadow:0 10px 26px rgba(168,211,207,.35) }
+.plan__foot--split{ border-top:1px solid #e5eff0; padding-top:14px; margin-top:20px }
+.plan--featured .cta--mega.cta--compact{ font-size:18px; padding:14px 18px; border-radius:14px; line-height:1.1 }
+.plan__footRight{ display:flex; flex-direction:column; align-items:flex-end; gap:8px; text-align:right; min-width:220px }
+@media (max-width:980px){ .pricing{ grid-template-columns:1fr } .plan--featured{ order:-1 } }
+
+/* ---------- Social proof ---------- */
+.proof{ margin-top:18px }
+.proof__row{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px }
+.proof__card{ background:linear-gradient(180deg,#ffffff 0%,#f6fbf9 100%); color:#0e2c2a; border:1px solid #e8eeef; border-radius:16px; padding:14px; display:flex; flex-direction:column; gap:8px; box-shadow:0 10px 28px rgba(16,24,40,.06) }
+.proof__card:hover{ box-shadow:0 16px 40px rgba(16,24,40,.10) }
+.proof__label{ font-size:14px; color:#3b5c59 }
+.stars{ display:flex; align-items:center }
+.star-svg{ width:28px; height:28px }
+.star--full{ fill:var(--mint) }
+.star-masked{ --fill:96%; width:28px; height:28px; display:inline-block; background:linear-gradient(90deg,var(--mint) var(--fill),transparent 0),rgba(255,255,255,.28); -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.9 6.7 7.1.6-5.3 4.6 1.7 6.9L12 17.7 5.6 20.8l1.7-6.9L2 9.3l7.1-.6L12 2z'/></svg>") center/contain no-repeat; mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.9 6.7 7.1.6-5.3 4.6 1.7 6.9L12 17.7 5.6 20.8l1.7-6.9L2 9.3l7.1-.6L12 2z'/></svg>") center/contain no-repeat }
+.avatars{ display:flex; align-items:center }
+.avatars img{ width:28px; height:28px; border-radius:50%; object-fit:cover; border:2px solid #12161c; margin-left:-8px; box-shadow:0 2px 8px rgba(0,0,0,.25) }
+.avatars img:first-child{ margin-left:0 }
+.avatars__more{ margin-left:-8px; font-weight:800; color:var(--mint); background:#0f1a1a; border:2px solid #12161c; border-radius:999px; padding:4px 8px; font-size:12px; box-shadow:0 2px 8px rgba(0,0,0,.25) }
+.payIcons{ display:flex; align-items:center; gap:8px }
+.payIcon{ width:24px; height:24px; object-fit:contain; display:block; background:#fff; border-radius:6px; padding:2px; box-shadow:0 2px 8px rgba(0,0,0,.18); outline:1px solid rgba(168,211,207,.25) }
+.guardText{ color:#3b5c59 }
+.pay{ display:flex; gap:8px; flex-wrap:wrap }
+.pay__tag{ background:#f0f6f5; color:#2b4b48; border:1px solid #d3ebe7; border-radius:8px; padding:6px 10px; font-size:12px; letter-spacing:.2px }
+@media (max-width:980px){ .proof__row{ grid-template-columns:1fr } }
+
+/* ---------- INPUT fallback ---------- */
+input[type="text"], input[type="tel"], input[type="email"]{ font-size:16px }
+
+/* ---------- THEME TOGGLE ---------- */
+.themeSwitch{ appearance:none; padding:0; line-height:0; width:36px; height:36px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; border:1px solid #e9ecef; background:#fff; box-shadow:0 1px 2px rgba(16,24,40,.06); transition:.15s ease }
+.themeSwitch:hover{ transform:translateY(-1px); box-shadow:0 4px 10px rgba(16,24,40,.08) }
+.themeSwitch img{ display:block; width:20px; height:20px; pointer-events:none }
+.nav__inner .themeSwitch{ margin-left:8px }
+
+/* ---------- LANG SWITCH ---------- */
+.langSwitch{ display:inline-flex; align-items:center; justify-content:center; min-width:40px; height:40px; padding:0 10px; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,.9); color:var(--ink); font-weight:600; font-size:12px; line-height:1; letter-spacing:.5px; box-shadow:0 1px 0 rgba(17,19,23,.03); cursor:pointer; user-select:none; transition:background .2s ease,border-color .2s ease,color .2s ease,transform .1s ease }
+.langSwitch:hover{ background:#f1f3f5 }
+.langSwitch:active{ transform:translateY(1px) }
+.langSwitch[data-lang="uz"], .langSwitch.is-uz{ background:rgba(168,211,207,.22); border-color:rgba(168,211,207,.55); color:var(--mint-ink); box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 6px 16px rgba(168,211,207,.25) }
+@media (max-width:420px){ .langSwitch{ min-width:36px; height:36px; padding:0 8px } .themeSwitch{ width:36px; height:36px } }
+
+/* ---------- BENEFITS (unchanged except dark colors) ---------- */
+.benefits-bleed-full{ position:relative; left:50%; transform:translateX(-50%); width:100vw; min-height:92vh; background:linear-gradient(90deg,rgba(255,255,255,.92) 0%,rgba(243,250,249,.88) 40%,rgba(168,211,207,.25) 100%),url('/src/assets/UTLschool.png') center/cover no-repeat; border-top:1px solid rgba(168,211,207,.22); border-bottom:1px solid rgba(168,211,207,.22); box-shadow:inset 0 0 0 1px rgba(168,211,207,.1); overflow:hidden }
+.benefitsCircleScene{ position:absolute; inset:0 }
+.benefitsCore{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:1; width:220px; height:220px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:radial-gradient(closest-side,rgba(168,211,207,.25),rgba(168,211,207,.10) 70%,transparent 72%),linear-gradient(180deg,#ffffff 0%,#eaf5f3 100%); border:1px solid rgba(168,211,207,.45); box-shadow:0 16px 36px rgba(168,211,207,.22),inset 0 0 0 1px rgba(255,255,255,.6) }
+.benefitsCore__text{ text-align:center; color:#0e2c2a; font-weight:900; font-size:20px; line-height:1.2; padding:0 12px }
+.benefitsCore__ring{ position:absolute; inset:-2px; border-radius:50%; background:conic-gradient(from 0deg,rgba(168,211,207,0),rgba(168,211,207,.9),rgba(168,211,207,0) 70%); -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; padding:2px; opacity:.85; animation:spin 18s linear infinite }
+.benefitsCore__button{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; border-radius:999px; box-shadow:0 12px 28px rgba(168,211,207,.35),0 2px 0 rgba(0,0,0,.06) inset; font-weight:900; letter-spacing:.2px; max-width:calc(100% - 36px); white-space:nowrap; opacity:0; pointer-events:none; transition:.35s ease }
+.benefitsCore.show-cta .benefitsCore__text{ opacity:0; transform:translateY(-6px) }
+.benefitsCore.show-cta .benefitsCore__button{ opacity:1; pointer-events:auto; transform:translate(-50%,-50%) }
+:root{ --ring-r:300px; --benefit-w:248px; --benefit-h:148px }
+.benefitCard{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.99); width:var(--benefit-w); min-height:var(--benefit-h); border-radius:18px; border:1px solid #e8eeef; background:#fff; color:#0e2c2a; box-shadow:0 12px 28px rgba(16,24,40,.08); overflow:hidden; opacity:0; transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .36s ease,box-shadow .25s ease,border-color .25s ease }
+.tileFx{ position:absolute; inset:-2px; width:104%; height:104%; object-fit:cover; opacity:.12; mix-blend-mode:overlay; pointer-events:none }
+.benefitBgIcon{ position:absolute; right:10px; bottom:8px; width:100px; height:100px; opacity:.20; stroke:#7bbdb6 }
+.benefitCard__content{ position:relative; z-index:2; padding:14px 14px 16px }
+.benefitCard__head{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
+.benefitCard__icon{ display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center; border-radius:10px; background:#f0faf8; color:#0e2c2a }
+.benefitCard__title{ font-weight:900; font-size:17px; letter-spacing:.3px; color:#0e2c2a }
+.benefitCard__text{ font-size:15px; line-height:1.45; color:#222 }
+@media (max-width:1200px){ :root{ --ring-r:260px } }
+@media (max-width:980px){ :root{ --ring-r:220px } .benefitsCore{ width:180px; height:180px } .benefitCard{ width:260px } }
+@media (max-width:720px){ :root{ --ring-r:190px } .benefitCard{ width:240px } }
+@media (max-width:560px){ :root{ --ring-r:0px } .benefitCard,.benefitsCircleScene.explode .radial{ position:relative; left:auto; top:auto; transform:none !important; opacity:1; margin:10px auto } .benefitsCore{ position:relative; left:auto; top:auto; transform:none; margin:0 auto 14px } .benefits-bleed-full{ height:auto } }
+
+/* ---------- Light-only background overrides ---------- */
+#how, #contact{ background:#fff }            /* по просьбе — белые в светлой теме */
+#faq{ background:var(--soft) !important; border-color:var(--border) }
+.footer{ background:var(--soft) !important }
+
+/* ---------- Dark Theme (контрастный тёмный + белый текст) ---------- */
+html.theme-dark{ color-scheme:dark }
+html.theme-dark body{ background:#0b0f12; color:#e9f5f3 }
+html.theme-dark .nav{ background:rgba(17,19,23,.85); border-bottom:1px solid #1a2028 }
+html.theme-dark .nav__link{ color:#e9f5f3 }
+.theme-dark .nav__link:hover{ background:#1a1f26 }
+html.theme-dark .drawer{ background:#0f1418; border-color:#1a2028 }
+html.theme-dark .drawer__link{ color:#f3f7f6 }
+html.theme-dark .drawer__link:hover{ background:#121920 }
+html.theme-dark .section--soft{ background:#0f1418 }
+html.theme-dark .card{ background:#0f1418; border-color:#1d242c; box-shadow:0 2px 14px rgba(0,0,0,.4) }
+html.theme-dark .cta--ghost{ background:#0b0f12; color:#e9f5f3 }
+html.theme-dark .hero{ border-bottom-color:#1a2028 }
+html.theme-dark .benefits-bleed-full{ background:radial-gradient(80% 100% at 0% 0%,rgba(10,14,16,.66),rgba(10,14,16,.66)),linear-gradient(90deg,#0f1418 0%,#0f1418 40%,#111317 100%) }
+html.theme-dark .benefitsCore{ background:radial-gradient(closest-side,rgba(168,211,207,.08),rgba(168,211,207,.04) 70%,transparent 72%),linear-gradient(180deg,#12161c 0%,#0f1318 100%); border-color:#1f262e; box-shadow:0 16px 40px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.03) }
+html.theme-dark .benefitCard{ background:linear-gradient(180deg,#1c1f24 0%,#111317 100%); color:#f5f5f5; border-color:rgba(255,255,255,.06); box-shadow:0 16px 36px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.04) }
+html.theme-dark .benefitCard__text, html.theme-dark .benefitCard__title{ color:#e9f5f3 }
+html.theme-dark .tcard{ background:#0f1418; border-color:#1d242c; box-shadow:0 6px 22px rgba(0,0,0,.45) }
+html.theme-dark .plan{ background:radial-gradient(160% 130% at 120% -20%,rgba(168,211,207,.10),rgba(168,211,207,0) 55%),linear-gradient(180deg,#111317 0%,#161a20 100%); color:#e9f5f3; border:1px solid rgba(168,211,207,.18); box-shadow:0 10px 28px rgba(6,10,12,.30),inset 0 0 0 1px rgba(255,255,255,.03) }
+html.theme-dark .features, .theme-dark .price__label, .theme-dark .kicker{ color:#e6f3f1 }
+html.theme-dark details{ border-color:#1f252c; background:#111317; color:#e9f5f3 }
+html.theme-dark summary{ color:#e9f5f3 }
+html.theme-dark #faq{ background:#0f1418 !important }          /* в тёмной теме — тёмный фон */
+html.theme-dark #how, html.theme-dark #contact{ background:#0f1418 }  /* просили сделать тёмным */
+html.theme-dark #contact .p, html.theme-dark label.p{ color:#e9f5f3 }  /* текст белым */
+html.theme-dark .footer{ background:linear-gradient(180deg,#0b0f12 0%,#0f1418 100%); color:#dbeeed; border-top:1px solid #1f252c }
+html.theme-dark .footer__icon{ background:#fff; border-color:#e2eceb; box-shadow:0 3px 10px rgba(16,24,40,.06) }
+html.theme-dark .footer__phone a{ color:#e9f5f3 }
+html.theme-dark .footer__phone a:hover{ color:var(--mint) }
+html.theme-dark .faqAside--alt{ background:linear-gradient(180deg,#111317 0%, #161a20 100%); border-color:#1d242c }
+html.theme-dark .seoList, html.theme-dark .faqAside--alt .p, html.theme-dark .faqAside__title{ color:#e9f5f3 }
+html.theme-dark .promoStat{ background:linear-gradient(180deg,#12161c 0%, #0f1418 100%); border-color:#1d242c }
+html.theme-dark .promoStat__text, html.theme-dark .promoLead, html.theme-dark .promoNote{ color:#e9f5f3 }
+html.theme-dark .promoStat--compact{ background:linear-gradient(180deg,#12161c,#0f1418); border-color:#1d242c }
+html.theme-dark .promoLead--small, html.theme-dark .seoList--compact li, html.theme-dark .promoCTA .note{ color:#e9f5f3 }
+html.theme-dark .promoUrgency{ border-color:#735a2a; background:linear-gradient(180deg,#1b160d,#121007) }
+html.theme-dark .promoUrgency__text{ color:#f5e4b1 }
+
+/* === Tariffs / Pricing tweaks === */
+
+/* 1) Пилюли внутри тарифов — мятные */
+.plan__badges .badge,
+.plan .badge{
+  background: linear-gradient(180deg,#e7f6f3,#dff2ef);
+  border: 1px solid #cfe7e3;
+  color: #0f2e2c;
+}
+html.theme-dark .plan__badges .badge,
+html.theme-dark .plan .badge{
+  background: var(--mint);
+  color: var(--mint-ink);
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(168,211,207,.25);
+}
+
+/* 2) Три карточки снизу (отзывы/выпускники/оплата) — тёмные в dark */
+html.theme-dark .proof__card{
+  background: linear-gradient(180deg,#12161c,#0f1418);
+  color:#e9f5f3;
+  border-color:#1d242c;
+}
+
+/* 3) Названия тарифов и большие “нед/мес” — светлее в dark */
+html.theme-dark .plan__title,
+html.theme-dark .plan h2,
+html.theme-dark .plan h3,
+html.theme-dark .price__now{
+  color:#f0fbf9;
+}
+
+/* ===================== HOW — dark: внутренности чёрные, текст белый ===================== */
+
+/* Левая колонка: шаги */
+html.theme-dark .how .stepBtn{
+  background:#0f1418;             /* тёмный фон */
+  border:1px solid #1d242c;
+  color:#e9f5f3;
+  box-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+html.theme-dark .how .stepBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(0,0,0,.45);
+}
+html.theme-dark .how .stepBtn.active{
+  background:#11161c;
+  border-color:#2a353d;
+  outline:4px solid rgba(168,211,207,.18);
+  box-shadow:0 12px 28px rgba(0,0,0,.5);
+}
+html.theme-dark .how .stepTitle{ color:#e9f5f3 }
+html.theme-dark .how .stepIndex{ box-shadow:0 4px 14px rgba(168,211,207,.35) } /* зелёный кружок — как был */
+
+/* Правая колонка: контейнер сцены/формы */
+html.theme-dark .how .sceneWrap{
+  background:#0f1418;
+  border:1px solid #1d242c;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/* Поля формы и плейсхолдеры */
+html.theme-dark #how input,
+html.theme-dark #how textarea,
+html.theme-dark #how select{
+  background:#0b0f12;
+  border:1px solid #2a3139;
+  color:#e9f5f3;
+}
+html.theme-dark #how input::placeholder,
+html.theme-dark #how textarea::placeholder{ color:#9fbebb }
+
+/* Кнопка формы (чёрная с белым текстом) */
+html.theme-dark #how .cta{
+  background:#111317;
+  color:#e9f5f3;
+  border:1px solid #2a3139;
+  box-shadow:0 6px 16px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.04);
+}
+html.theme-dark #how .cta:hover{
+  background:#161a20;
+  box-shadow:0 10px 22px rgba(0,0,0,.55), inset 0 2px 0 rgba(255,255,255,.03);
+}
+html.theme-dark #how .cta:active{ transform:translateY(0) }
+
+/* Авто-заполнение Chrome, чтобы не «желтило» */
+html.theme-dark #how input:-webkit-autofill{
+  -webkit-text-fill-color:#e9f5f3;
+  -webkit-box-shadow:0 0 0 1000px #0b0f12 inset;
+  caret-color:#e9f5f3;
+}
+
+/* Header logo: всегда белый фон под логотипом */
+.brand__logo{
+  background-color:#fff !important;      /* белая плашка */
+  border:1px solid #e9ecef;              /* тонкая рамка как в светлой теме */
+  box-shadow:0 2px 10px rgba(0,0,0,.06);  /* лёгкая тень, чтобы читалось на тёмном */
+  border-radius:8px;                      /* как было */
+  /* остальное уже задано: width/height + background-image/contain/no-repeat */
+}
+
+/* === HEADER: компактный логотип без плашки, только сам знак === */
+.brand__logo{
+  display:inline-block;
+  width:124px;                 /* подгони при необходимости */
+  height:36px;                 /* подгони при необходимости */
+  padding:0; margin:0; border:0;
+  background:none;
+
+  /* используем файл логотипа как маску, чтобы был виден только контур */
+  -webkit-mask: url('../src/assets/logoheader.png') center/contain no-repeat;
+          mask: url('../src/assets/logoheader.png') center/contain no-repeat;
+
+  /* цвет самого знака (в светлой теме тёмный, в тёмной — белый) */
+  background-color:#111;       /* светлая тема — тёмный знак */
+}
+
+/* тёмная тема: знак белый на тёмном фоне */
+html.theme-dark .brand__logo{
+  background-color:#fff;
+}
+
+/* на всякий случай убираем старые «плашки» */
+.brand__logo{ box-shadow:none !important; border:none !important; }
+
+/* ===================== BENEFITS — видимые карточки в тёмной теме (v2) ===================== */
+
+
+
+/* Center core */
+.benefitsCore{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:1; width:220px; height:220px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: radial-gradient(closest-side, rgba(168,211,207,.25), rgba(168,211,207,.10) 70%, transparent 72%), linear-gradient(180deg,#ffffff 0%,#eaf5f3 100%); border:1px solid rgba(168,211,207,.45); box-shadow:0 16px 36px rgba(168,211,207,.22), inset 0 0 0 1px rgba(255,255,255,.6) }
+.benefitsCore__text{ text-align:center; color:var(--mint); font-weight:900; font-size:20px; line-height:1.2; padding:0 12px }
+.benefitsCore__ring{ position:absolute; inset:-2px; border-radius:50%; background: conic-gradient(from 0deg, rgba(168,211,207,0), rgba(168,211,207,.9), rgba(168,211,207,0) 70%); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; padding:2px; opacity:.85; animation:spin 18s linear infinite }
+.benefitsCore__button{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; border-radius:999px; box-shadow:0 12px 28px rgba(168,211,207,.35), 0 2px 0 rgba(0,0,0,.06) inset; font-weight:900; letter-spacing:.2px; max-width: calc(100% - 36px); white-space:nowrap; opacity:0; pointer-events:none; transition:.35s ease }
+.benefitsCore.show-cta .benefitsCore__text{ opacity:0; transform:translateY(-6px) }
+.benefitsCore.show-cta .benefitsCore__button{ opacity:1; pointer-events:auto; transform:translate(-50%,-50%) }
+
+/* Benefit cards */
+:root{ --ring-r: 300px; --benefit-w: 248px; --benefit-h: 148px }
+.benefitCard{ position:absolute; left:50%; top:50%; transform: translate(-50%,-50%) scale(.99); width:var(--benefit-w); min-height:var(--benefit-h); border-radius:18px; border:1px solid #e8eeef; background:#fff; color:#0e2c2a; box-shadow:0 12px 28px rgba(16,24,40,.08); overflow:hidden; opacity:0; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .36s ease, box-shadow .25s ease, border-color .25s ease }
+.tileFx { position:absolute; inset:-2px; width:104%; height:104%; object-fit:cover; opacity:.12; mix-blend-mode:overlay; pointer-events:none }
+.benefitBgIcon { position:absolute; right:10px; bottom:8px; width:100px; height:100px; opacity:.20; stroke:#7bbdb6 }
+.benefitCard__content{ position:relative; z-index:2; padding:14px 14px 16px }
+.benefitCard__head{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
+.benefitCard__icon{ display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center; border-radius:10px; background:#f0faf8; color:#0e2c2a }
+.benefitCard__title{ font-weight:900; font-size:17px; letter-spacing:.3px; color:#0e2c2a }
+.benefitCard__text{ font-size:15px; line-height:1.45; color:#2b2b2b }
+
+.benefitsCircleScene.explode .radial{ opacity:1 }
+.benefitsCircleScene.explode .n1{ transform: translate(-50%,-50%) rotate(50deg) translate(var(--ring-r)) rotate(-50deg) }
+.benefitsCircleScene.explode .n2{ transform: translate(-50%,-50%) rotate(130deg) translate(var(--ring-r)) rotate(-130deg) }
+.benefitsCircleScene.explode .n3{ transform: translate(-50%,-50%) rotate(230deg) translate(var(--ring-r)) rotate(-230deg) }
+.benefitsCircleScene.explode .n4{ transform: translate(-50%,-50%) rotate(310deg) translate(var(--ring-r)) rotate(-310deg) }
+
+@media (max-width:1200px){ :root{ --ring-r: 260px } }
+@media (max-width:980px){ :root{ --ring-r: 220px } .benefitsCore{ width:180px; height:180px } .benefitCard{ width:260px } }
+@media (max-width:720px){ :root{ --ring-r: 190px } .benefitCard{ width:240px } }
+@media (max-width:560px){ :root{ --ring-r: 0px } .benefitCard, .benefitsCircleScene.explode .radial{ position:relative; left:auto; top:auto; transform:none !important; opacity:1; margin:10px auto } .benefitsCore{ position:relative; left:auto; top:auto; transform:none; margin:0 auto 14px } .benefits-bleed-full{ height:auto } }
+
+/* ===== Footer — тёмная тема (чёрный стиль) ===== */
+html.theme-dark .footer{
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(168,211,207,.06), transparent 55%),
+    linear-gradient(180deg,#0b0f12 0%, #10161b 100%) !important;
+  color:#e9f5f3;
+  border-top:1px solid #1f252c;
+}
+
+/* текст/заголовки */
+html.theme-dark .footer__title{ color:#fff; }
+html.theme-dark .footer__contacts,
+html.theme-dark .footer__address,
+html.theme-dark .footer__legal{ color:#cfe1de; }
+html.theme-dark .footer__legal{ opacity:.9; }
+
+/* карта и бейдж */
+html.theme-dark .footer__map{
+  background:#0f1418;
+  border:1px solid #1d242c;
+  box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 0 1px #1d242c inset;
+}
+html.theme-dark .mapBadge{ background:var(--mint); color:var(--mint-ink); }
+
+/* иконки соцсетей — оставляем белые кружки */
+html.theme-dark .footer__icon{
+  background:#fff;
+  border:1px solid #e2eceb;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+
+/* телефон — белым, не мятным */
+html.theme-dark .footer__phone a{
+  color:#fff !important;
+}
+html.theme-dark .footer__phone a:hover{
+  color:var(--mint);
+}
+
+/* === About: сделать текст поярче в тёмной теме === */
+html.theme-dark #about .p,
+html.theme-dark #about p,
+html.theme-dark #about li{
+  color:#DFEEED;            /* чуть ярче, чем было */
+}
+
+html.theme-dark #about b,
+html.theme-dark #about strong{
+  color:#FFFFFF;            /* акценты — чисто белые */
+}
+
+html.theme-dark #about i,
+html.theme-dark #about em{
+  color:#EAF7F5;            /* курсив/уточнения — тоже светлее */
+  opacity:1;
+}
+
+html.theme-dark #about .h2,
+html.theme-dark #about h2{
+  color:#F7FBFA;            /* заголовок поярче */
+}
+
+/* === Tariffs — поднять секцию чуть выше === */
+#pricing.section,
+section#pricing {
+  padding-top: 36px;              /* было 72px */
+}
+
+/* === Внутри карточек — больше «воздуха» над кнопками === */
+.features {                       /* список преимуществ */
+  margin-top: 18px;
+}
+.features li {                    /* чуть больше межстрочный интервал */
+  margin: 10px 0;
+}
+
+/* подвал карточки: отступ от текста до кнопок */
+.plan__foot {
+  margin-top: 28px;               /* ↑ расстояние до CTA */
+  padding-top: 12px;
+}
+
+/* вариант с разделительной линией */
+.plan__foot--split {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(229,239,240,.18); /* корректный тон в тёмной теме */
+}
+
+/* === Премиум — убрать горизонтальную черту над кнопкой === */
+/* если премиум идёт третьим (последним) в сетке .pricing */
+.pricing .plan:last-child .plan__foot--split {
+  border-top: none;
+  padding-top: 0;
+  /* немного расстояния оставить всё же нужно */
+  margin-top: 22px;
+}
+
+/* (доп.) в светлой теме оттенок линии чуть темнее */
+html:not(.theme-dark) .plan__foot--split {
+  border-top-color: #e5eff0;
+}
+
+/* Карточки тарифов тянем на одинаковую высоту */
+.pricing{
+  align-items: stretch;            /* растягиваем элементы сетки по высоте */
+}
+.pricing .plan{
+  display: flex;
+  flex-direction: column;
+  height: 100%;                    /* чтобы высота занимала всю ячейку */
+}
+
+/* Подвал карточки (где CTA) — прибить к низу */
+.plan__foot,
+.plan__foot--split{
+  margin-top: auto !important;     /* ключевой трюк: уходит в самый низ */
+  padding-top: 14px;               /* небольшой «воздух» над кнопкой */
+}
+
+/* (если у премиума без разделителя) */
+.pricing .plan:last-child .plan__foot--split{
+  border-top: none;
+  padding-top: 0;
+  margin-top: auto !important;     /* тоже к низу */
+}
+
+/* ====== Tariffs: make cards taller & equal height ====== */
+:root{
+  /* удобно менять высоту одной цифрой */
+  --plan-min-h: 560px; /* было ~520–560px, стало выше */
+}
+
+.pricing{
+  align-items: stretch;                 /* все карточки одной высоты */
+}
+
+.pricing .plan{
+  display: flex;
+  flex-direction: column;
+  min-height: var(--plan-min-h);        /* ключ: выше карточки */
+  padding: 26px 28px 22px;               /* чуть больше «воздуха» сверху/сбоку */
+}
+
+/* чтобы контент сверху не лип к CTA, а кнопка была внизу */
+.plan__foot,
+.plan__foot--split{
+  margin-top: auto !important;          /* прибить подвал к низу */
+  padding-top: 18px;                     /* воздуха над кнопкой ещё немного */
+}
+
+/* немного воздуха между списком фич и подвалом */
+.features{ margin-bottom: 8px; }
+
+/* «Премиум»: убираем лишний разделитель, если он ещё где-то всплывал */
+.pricing .plan:last-child .plan__foot--split{
+  border-top: none;
+  padding-top: 0;
+  margin-top: auto !important;
+}
+
+/* Мобильный/планшет: возвращаем авто-высоту, чтобы не было лишних пустот */
+@media (max-width: 980px){
+  .pricing .plan{ min-height: auto; }
+}
+
+/* FAQ — более тёмный фон */
+html.theme-dark #faq,
+html.theme-dark .faqWrap {
+  background: #0b0f12 !important;   /* чернее нынешнего */
+  border-color: #12161c;            /* аккуратная граница, если нужна */
+}
+
+/* чтоб карточки на тёмном фоне читались */
+html.theme-dark details {
+  background: #111317;              /* чуть светлее фона */
+  border-color: #1d242c;
+}
+html.theme-dark summary { color: #e9f5f3; }
+
+/* 1) Отзывы — сделать «менее чёрным», как раньше был FAQ */
+html.theme-dark #reviews,
+html.theme-dark #testimonials,
+html.theme-dark .reviews,
+html.theme-dark .testimonials,
+html.theme-dark .proof {           /* подстраховка под текущее имя секции */
+  background: #12161c !important;  /* мягкий тёмно-графитовый */
+  border-color: #1a2028;
+}
+
+/* 2) Футер — ещё темнее, как у обновлённого FAQ */
+html.theme-dark .footer{
+  background: #0b0f12 !important;
+  border-top: 1px solid #1a2028;
+  color: #e9f5f3;
+}
+/* телефон в футере — точно белый */
+html.theme-dark .footer__phone a{ color:#fff; }
+
+/* 3) Убрать тёмную полосу между «Заявкой» и футером */
+.footer{
+  margin-top: 0;                  /* полосы не будет */
+  padding-top: 60px;              /* сохранил воздух вместо margin */
+}
+/* На всякий случай — низ у секции заявки (если нужна стыковка без разрыва) */
+#contact.section{
+  padding-bottom: 72px;           /* стандартный отступ секции, без лишней «полосы» */
+}
+
+/* Базовые тени помягче на тёмном фоне */
+.tcard, .benefitCard{
+  box-shadow: 0 8px 22px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.03) inset;
+}
+
+/* Сцена: мобильная версия — список */
+@media (max-width: 560px){
+  .benefits-bleed-full{ min-height:auto; padding:16px 0 }
+  .benefitsCircleScene{ position:static; }
+  .benefitsCore{
+    width:auto; height:auto; border-radius:14px;
+    padding:14px; margin:0 0 10px;
+    background:linear-gradient(180deg,#12161c,#0f1418); /* явный контур */
+    box-shadow: 0 10px 24px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.04) inset;
+  }
+  .benefitsCore__text{ font-size:16px }
+  .benefitsCore__button{
+    padding:12px 18px; font-size:14px; border-radius:999px;
+    box-shadow: 0 8px 20px rgba(168,211,207,.25);
+  }
+  .benefitsCore__ring{ display:none } /* убираем декоративное кольцо */
+
+  /* Карточки по списку */
+  .benefitCard{
+    position:relative; left:auto; top:auto; transform:none !important; opacity:1;
+    margin:10px 0; width:100%;
+    background:linear-gradient(180deg,#151a20,#101418);
+    border:1px solid #1e262e;
+    box-shadow: 0 8px 22px rgba(0,0,0,.28);
+  }
+  .benefitCard__content{ padding:14px }
+}
+
+/* Чуть светлее заголовки карточек на мобиле */
+@media (max-width: 560px){
+  .benefitCard__title{ color:#f2fbf9 }
+}
+
+/* Мобильные внутренние поля контейнера (чтобы текст не прилипал к краям) */
+@media (max-width: 560px){
+  .container{ padding-left:16px; padding-right:16px }
+}
+
+/* Мин. высота кликабельных плашек и CTA */
+.cta, .badge, .card__tag, .plan .cta--mega, .pill, .chip {
+  min-height: 44px; display:inline-flex; align-items:center;
+}
+
+/* Маршрутные линии — приглушить на мобиле */
+@media (max-width: 560px){
+  .routeSectionBG{ opacity:.24; filter: blur(.2px) }
+}
+
+/* «Отзывы / Оплата / Выпускники» — больше контраста и воздуха на мобиле */
+@media (max-width: 560px){
+  .proof__card, .pay, .payIcons, .graduatesCard{
+    background: linear-gradient(180deg,#151a20,#101418);
+    border:1px solid #1e262e; border-radius:14px;
+    padding:12px; box-shadow: 0 8px 22px rgba(0,0,0,.28);
+  }
+  .proof__label{ color:#e6f3f1 }
+}
+
+/* Тарифы: кнопки по низу — уже ок; даём чуть больше «воздуха» над ними */
+@media (max-width: 560px){
+  .plan{ padding-bottom:18px }
+  .plan__foot{ margin-top:16px }
+}
+
+/* ====== NO HORIZONTAL SCROLL (mobile-safe kit) ====== */
+
+/* 1) Глобально отрезаем всё, что вылезает за вьюпорт */
+html, body {
+  max-width: 100%;
+  overflow-x: clip;               /* современный способ */
+}
+@supports not (overflow-x: clip) {
+  html, body { overflow-x: hidden; } /* фоллбек */
+}
+
+/* 2) Медиа никогда не шире родителя */
+img, video, iframe, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 3) Любые «полноширинные» секции — без 100vw-ловушки */
+.full-bleed, [data-full-bleed="true"] {
+  width: 100% !important;         /* вместо 100vw */
+}
+
+/* 4) Секции с абсолютными фонами/линиями — ничего не выпускаем наружу */
+.section.withRouteBG,
+.faqWrap.withRouteBG,
+.routeSectionBG {
+  overflow: hidden;               /* обрезаем хвосты SVG/фонов */
+  left: 0; right: 0;              /* без субпиксельных сдвигов */
+  width: 100%;
+}
+
+/* 5) Герой/видео/бекграунды во всю ширину — но не шире контейнера */
+.hero,
+.hero__bgVideo,
+.hero__image,
+.hero__video {
+  max-width: 100%;
+}
+.hero__bgVideo,
+.hero__video {
+  width: 100%;
+}
+
+/* 6) Проблемные «кольцевые»/полнокровные блоки на мобильном —
+      убираем translate/left и 100vw */
+@media (max-width: 560px) {
+  .benefits-bleed-full {
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    overflow: hidden;
+  }
+}
+
+/* 7) Галерея «О школе» — выключаем отрицательные маргины на мобиле */
+@media (max-width: 980px) {
+  .aboutGrid > div:first-child,
+  .aboutGrid > div:last-child {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* 8) Контейнер: безопасные внутренние отступы на узких экранах */
+@media (max-width: 560px) {
+  .container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* 9) Встраиваемые карты/фреймы — тоже под нож по ширине */
+.footer__map,
+.footer__map iframe {
+  max-width: 100%;
+}
+
+/* 10) На всякий пожарный: любые абсолютно позиционированные «декорации» */
+[class*="bg"], [class*="decor"], [class*="route"] {
+  max-width: 100%;
+}
+
+/* ---------- Burger (с gif) ---------- */
+.burger{
+  display:none;
+  width:38px; height:38px;
+  border-radius:10px;
+  border:1px solid #e9ecef;
+  background:#fff;
+  cursor:pointer;
+  line-height:0;
+}
+.burger:focus{ outline:none; box-shadow:0 0 0 3px rgba(168,211,207,.35) }
+.burger__gif{
+  display:block; width:24px; height:24px; pointer-events:none;
+}
+.burger__close{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:24px; height:24px; font-size:22px; font-weight:700;
+  transform:translateY(-1px);
+}
+
+/* Положение бургера справа, без влияния на соседние элементы */
+@media (max-width:980px){
+  .nav__links{ display:none }
+  .nav__inner{ position:relative; padding-right:56px; }
+  .burger{
+    display:inline-flex; align-items:center; justify-content:center;
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    z-index:56;
+  }
+}
+
+/* Темная тема */
+html.theme-dark .burger{
+  background:#0f1418; border-color:#1a2028; color:#e9f5f3;
+}
+
+/* Burger + мобильная шапка без абсолютного позиционирования */
+@media (max-width:980px){
+  .nav__links{ display:none }
+
+  .nav__inner{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-right:20px;        /* обычный внутренний отступ */
+  }
+
+  /* Кнопка в шапке — уводим контент влево, бургер уходит вправо */
+  .nav .cta{
+    margin-left:auto;          /* ← ключ: резервирует место справа под бургер */
+  }
+
+  .burger{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:38px; height:38px;
+    border-radius:10px;
+    border:1px solid #e9ecef;
+    background:#fff;
+    cursor:pointer;
+    line-height:0;
+    /* Никаких absolute/transform/top/right */
+  }
+}
+
+/* Тёмная тема для бургера */
+html.theme-dark .burger{
+  background:#0f1418; border-color:#1a2028; color:#e9f5f3;
+}
+
+/* Гиф/иконка внутри бургера */
+.burger__gif{ display:block; width:24px; height:24px; pointer-events:none }
+.burger__close{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:24px; height:24px; font-size:22px; font-weight:700; transform:translateY(-1px);
+}
+
+/* до 980px ширины кнопка в шапке пропадает (остается FAB внизу) */
+@media (max-width:980px){
+  .cta--nav{ display:none !important; }
+}
+
+html.theme-dark .burger{
+  background:#0f1418;
+  border-color:#1a2028;
+  color:#e9f5f3;
+  box-shadow:0 1px 2px rgba(0,0,0,.45);
+}
+html.theme-dark .burger:hover{
+  box-shadow:0 6px 16px rgba(0,0,0,.5);
+}
+html.theme-dark .burger .burger__gif{
+  filter: invert(1) brightness(1.15);  /* делает линии GIF белыми */
+}
+html.theme-dark .burger .burger__close{ color:#e9f5f3; }
+
+/* состояние "открыто" — лёгкий акцент, без ядовитых цветов */
+.burger.is-open{
+  background:#f5f7f8;
+  border-color:#dfe3e6;
+}
+html.theme-dark .burger.is-open{
+  background:#111317;
+  border-color:#2a3139;
+}
+
+/* показываем бургер только когда прячем десктоп-меню */
+@media (max-width:980px){
+  .nav__links{ display:none; }
+  .burger{ display:inline-flex; align-items:center; justify-content:center; }
+}
+
+/* HOW — на мобиле показываем только активную сцену */
+@media (max-width: 980px){
+  .how .fadeWrap{
+    position: relative;
+    min-height: 260px;           /* чтобы контейнер не схлопывался (подбери при желании) */
+  }
+
+  .how .fadeScene{
+    position: relative;          /* не абсолют — чтобы блок подстраивал высоту под активную сцену */
+    inset: auto;
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    display: none;               /* КЛЮЧ: скрываем неактивные */
+  }
+
+  .how .fadeScene.active{
+    display: block;              /* КЛЮЧ: видим только активную сцену */
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+/* BENEFITS — мобильная версия: без анимаций и без CTA */
+@media (max-width: 560px){
+  /* центр — только заголовок, кнопка скрыта */
+  .benefitsCore__button{ display:none !important; }
+  .benefitsCore__text{ opacity:1 !important; transform:none !important; }
+
+  /* глушим все анимации/спины/переходы */
+  .benefitsCircleScene, 
+  .benefitsCircleScene *{ animation:none !important; }
+  .benefitsCore__ring{ display:none !important; }      /* кольцо убираем */
+  .tileFx{ display:none !important; }                   /* фон-видео на карточках отключаем */
+  .benefitCard, .benefitsCore{ transition:none !important; }
+
+  /* карточки — статично одной колонкой */
+  .benefits-bleed-full{
+    left:0 !important; transform:none !important; width:100% !important;
+    min-height:auto; padding:16px 0;
+  }
+  .benefitsCircleScene{ position:static; }
+  .benefitCard{
+    position:relative; left:auto; top:auto;
+    transform:none !important; opacity:1 !important;
+    margin:10px 0; width:100%;
+  }
+
+  /* гарантированно отменяем «разлёт» при .explode */
+  .benefitsCircleScene.explode .radial,
+  .benefitsCircleScene.explode .n1,
+  .benefitsCircleScene.explode .n2,
+  .benefitsCircleScene.explode .n3,
+  .benefitsCircleScene.explode .n4{
+    transform:none !important; opacity:1 !important;
+  }
+}
+
+/* FAQ — оффер по доходу: по центру на мобиле */
+@media (max-width: 980px){
+  .faqGrid{
+    grid-template-columns: 1fr;     /* уже есть, но просто фиксируем */
+  }
+  .faqAside--slim{
+    justify-self: center !important; /* вместо end */
+    margin: 12px auto 0 !important;  /* убираем прижатие вправо */
+    width: min(420px, 100%) !important; /* адекватная ширина */
+  }
+}
+
+/* ======= MOBILE H-SCROLL KILLER (append at the very end) ======= */
+
+/* 1) Глобально режем всё, что выходит за вьюпорт */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;           /* фоллбек для старых браузеров */
+  overflow-x: clip;             /* современный способ (если поддерживается) */
+}
+
+/* 2) Частая причина — full-bleed секции с 100vw и смещением */
+@media (max-width: 980px){
+  .benefits-bleed-full{
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;     /* вместо 100vw */
+  }
+}
+
+/* 3) Любые секции с фоновыми линиями/декором — обрезаем хвосты */
+.section.withRouteBG,
+.faqWrap.withRouteBG,
+.routeSectionBG{
+  overflow: hidden !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;       /* страховка от 100vw внутри */
+}
+
+/* 4) Галерея "О школе" — на узких убираем отрицательные отступы,
+      чтобы ничего не выталкивало контент за край */
+@media (max-width: 980px){
+  .aboutGrid > div:first-child,
+  .aboutGrid > div:last-child{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* 5) Медиа никогда не шире родителя (без визуальных изменений) */
+img, video, iframe, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 6) Приватные full-bleed хелперы, если где-то встретится 100vw */
+.full-bleed,
+[data-full-bleed="true"]{
+  width: 100% !important;       /* вместо 100vw */
+  max-width: 100% !important;
+}
+
+/* ——— Жёстко блокируем горизонтальные жесты для страницы ——— */
+html, body{
+  overscroll-behavior-x: none;  /* не передаём инерцию по оси X */
+  touch-action: pan-y;          /* разрешаем только вертикальные жесты */
+}
+
+/* Карусель отзывов остаётся горизонтальной (внутри можно листать) */
+.scroll-x{
+  touch-action: pan-x;                  /* жест по X внутри карусели */
+  overscroll-behavior-inline: contain;  /* без «прокидывания» на страницу */
+  -webkit-overflow-scrolling: touch;    /* плавность на iOS */
+}
+
+/* Мобильный заголовок для блока "Почему выбирают нас" */
+.benefits__mobileTitle{
+  display:none;                  /* по умолчанию скрыт (десктоп) */
+}
+
+/* На мобилке: прячем центральный «круг» и показываем обычный заголовок */
+@media (max-width:560px){
+  #benefits .benefitsCore{ display:none !important; }   /* скрыть круглую плашку */
+  .benefits__mobileTitle{
+    display:block;
+    text-align:center;
+    margin:10px auto 8px;
+    padding:0 16px;              /* чтобы текст не прилипал к краям */
+  }
+}
+
+/* Мобилка: подвинуть язык и тему вправо, вплотную к бургеру */
+@media (max-width:980px){
+  /* поменьше «карман» справа, чтобы кнопки могли встать почти у бургера */
+  .nav__inner{ padding-right:48px; }
+
+  /* сам бургер чуть ближе к краю */
+  .burger{ right:12px; }
+
+  /* язык + тема прижимаются правее */
+  .langSwitch{ margin-right:6px; }   /* небольшой зазор между ними */
+  .themeSwitch{ margin-right:8px; }  /* минимальный зазор до бургера */
+}
+
+/* FOOTER map — фикс «обрезанной» карты */
+.footer__map{
+  position: relative;
+  width: 100%;
+  /* вместо одной min-height даём явную высоту через соотношение сторон */
+  aspect-ratio: 16 / 10;          /* карта сама посчитает высоту от ширины */
+  min-height: 260px;              /* фолбэк/минимум */
+  height: auto;                   /* пусть считает по aspect-ratio */
+  overflow: hidden;
+}
+
+.footer__map iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100% !important;        /* перебиваем глобальное height:auto */
+  display: block;
+}
+
+/* На узких экранах сделаем повыше, чтобы элементы управления не прижимались */
+@media (max-width: 900px){
+  .footer__map{ aspect-ratio: 16 / 12; min-height: 240px; }
+}
+
+/* FAQ — десктопные правки сетки и отступов */
+@media (min-width: 981px){
+  /* Чуть больше «воздуха» по бокам именно в этой секции */
+  #faq .container,
+  .faqWrap .container{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* Сетка: левая колонка стала заметно уже, правая — компактная */
+  .faqGrid{
+    grid-template-columns: minmax(420px, 0.9fr) minmax(360px, 0.7fr);
+    gap: 32px; /* больше расстояние между колонками */
+  }
+
+  /* Левая колонка: ограничиваем ширину списка вопросов */
+  .faqGrid > div:first-child{
+    max-width: 700px; /* ~в 2–2.5 раза уже, чем было впритык */
+  }
+
+  /* Сами карточки FAQ не шире узкой колонки */
+  #faq .faqItem,
+  #faq details{
+    width: 100%;
+    max-width: 700px;
+  }
+
+  /* Правый оффер: отжать от правой стенки и чуть сместить левее */
+  .faqAside--slim{
+    justify-self: start;        /* вместо end — не прилипает к правому краю */
+    margin-left: 8px;           /* лёгкий сдвиг вперёд от сетки */
+    margin-right: auto;         /* запас справа */
+    width: min(440px, 100%);    /* разумная ширина карточки */
+  }
+}
+
+/* Мобилка остаётся как была: центрируем оффер (твоя текущая логика) */
+@media (max-width: 980px){
+  .faqAside--slim{
+    justify-self: center !important;
+    margin: 12px auto 0 !important;
+    width: min(420px, 100%) !important;
+  }
+}
+
+/* FAQ — белый текст ответов (тёмная тема) */
+html.theme-dark #faq details .p,
+html.theme-dark #faq .faqItem .p{
+  color:#fff !important;
+}
+
+/* FAQ — отступы слева на десктопе */
+@media (min-width: 981px){
+  /* больше «воздуха» слева для всей секции */
+  #faq .container,
+  .faqWrap .container{
+    padding-left: clamp(40px, 6vw, 80px);
+  }
+
+  /* заголовок тоже немного дальше от левого края */
+  #faq .h2{
+    margin-left: clamp(8px, 2vw, 24px);
+  }
+
+  /* левая колонка с вопросами — ещё отступ от левого края */
+  .faqGrid > div:first-child{
+    margin-left: clamp(8px, 2vw, 24px);
+  }
+}
+/* ABOUT — чуть больше воздуха по бокам (только десктоп) */
+@media (min-width: 981px){
+  /* добавляем немного внутреннего отступа именно секции #about */
+  #about .container{
+    padding-left: clamp(28px, 4vw, 44px);
+    padding-right: clamp(28px, 4vw, 44px);
+  }
+
+  /* совсем слегка ослабим отрицательные маргины,
+     чтобы сохранить композицию, но дать «воздух» */
+  .aboutGrid > div:first-child{ margin-left: -6px; }   /* было -12px */
+  .aboutGrid > div:last-child{  margin-right: -6px; }  /* было -12px */
+}
+
+/* FAQ icons — dark: без белой подложки, заменяем на CSS-иконку */
+html.theme-dark .faqItem .faqIcon{
+  position: relative;
+}
+
+html.theme-dark .faqItem .faqIcon .ico{
+  display: none;                    /* гифки скрываем только в тёмной теме */
+}
+
+html.theme-dark .faqItem .faqIcon::before{
+  content: "?";
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--mint);          /* мятный кружок */
+  color: var(--mint-ink);           /* тёмный знак */
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* когда вопрос открыт — показываем "i" вместо "?" */
+html.theme-dark details[open] .faqItem .faqIcon::before{
+  content: "i";
+}
+
+/* Единый размер CTA-кнопок в тарифах */
+.plan .plan__cta{
+  width: 220px;             /* одинаковая ширина */
+  text-align: center;
+  padding: 14px 0;          /* одинаковая высота */
+  border-radius: 16px;      /* единый радиус */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* Мобильный — пусть кнопка тянется на всю ширину и стекается над подписью */
+@media (max-width: 980px){
+  .plan__foot{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .plan .plan__cta{ width: 100%; }
+  .plan__foot .note,
+  .plan__foot .note--right{ text-align: left; }
+}
+
+.seoLink {
+  --c: var(--mint, #27c0a7);
+  color: var(--c);
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.seoLink__text {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;     /* тонкое подчёркивание */
+  transition: background-size .25s ease, opacity .25s ease;
+}
+.seoLink__arrow {
+  transform: translateX(0);
+  opacity: .7;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.seoLink:hover .seoLink__text { background-size: 0 1px; opacity: .95; }
+.seoLink:hover .seoLink__arrow { transform: translateX(3px); opacity: 1; }
+
+/* лёгкий отступ для группы */
+.seoInline { margin-top: 10px; }
+
+/* Pricing – на мобилке в светлой теме оставляем светлый фон */
+@media (max-width:980px){
+  html:not(.theme-dark) .plan{
+    background:linear-gradient(180deg,#fff 0%,#f6fbf9 100%) !important;
+    color:#0e2c2a !important; border-color:#e8eeef !important;
+    box-shadow:0 10px 28px rgba(16,24,40,.06) !important;
+  }
+}
+
+/* БЫЛО (делает тёмными всегда) — лучше заменить:
+@media (max-width:560px){
+  .benefitCard{background:linear-gradient(180deg,#151a20,#101418);border:1px solid #1e262e;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+}
+*/
+
+/* ДОЛЖНО БЫТЬ: тёмные — только в тёмной теме */
+@media (max-width:560px){
+  html.theme-dark .benefitCard{
+    background:linear-gradient(180deg,#151a20,#101418);
+    border:1px solid #1e262e; box-shadow:0 8px 22px rgba(0,0,0,.28);
+  }
+  /* Светлая тема — светлые карточки */
+  html:not(.theme-dark) .benefitCard{
+    background:#fff; color:#0e2c2a; border:1px solid #e8eeef;
+    box-shadow:0 12px 28px rgba(16,24,40,.08);
+  }
+  html:not(.theme-dark) .benefitsCore{
+    background:radial-gradient(closest-side,rgba(168,211,207,.25),rgba(168,211,207,.10) 70%,transparent 72%),linear-gradient(180deg,#fff 0%,#eaf5f3 100%);
+    border-color:#d9ece9;
+  }
+}
+
+/* Один файл: красим логотип через mask */
+.brand__logo{
+  width:132px; height:48px; display:inline-block;
+  background-color:#111;                /* цвет логотипа в светлой теме */
+  background-image:none !important;     /* гасим старый background-image */
+
+  /* маска из PNG (положи файл в /src/assets/utls-logo.png) */
+  -webkit-mask: url('/src/assets/logoheader.png') center/contain no-repeat;
+          mask: url('/src/assets/logoheader.png') center/contain no-repeat;
+}
+
+/* Тёмная тема — делаем логотип белым */
+html.theme-dark .brand__logo{ background-color:#fff; }
+
+/* (необязательно) лёгкая читаемость на очень светлом фоне */
+.brand__logo{ filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+
+/* === UTL logo: один PNG, красим через mask === */
+.brand__logo{
+  width:132px; height:48px; display:inline-block;
+  background-color:#111; /* цвет логотипа в светлой теме */
+
+  /* маска (без шортхенда — кроссбраузернее) */
+  -webkit-mask-image: url('/src/assets/logoheader.png');
+          mask-image: url('/src/assets/logoheader.png');
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+/* Тёмная тема — перекрашиваем в белый */
+html.theme-dark .brand__logo{ background-color:#fff; }
+
+/* Фолбэк, если mask недоступен или путь не собрался */
+@supports not (-webkit-mask-image: url("")) {
+  .brand__logo{
+    background: url('/logo-utl.png') center/contain no-repeat;
+  }
+  html.theme-dark .brand__logo{
+    filter: invert(1) brightness(1.4) contrast(1.05);
+  }
+}
+
+  /* ===== FIX 1: Header logo (one PNG via mask, works in light/dark) ===== */
+.brand__logo{
+  display:inline-block; width:132px; height:48px;
+
+  /* убираем старые background-и */
+  background: none !important;
+
+  /* цвет логотипа в светлой теме */
+  background-color:#111 !important;
+
+  /* маска из твоего файла (путь как в старом правиле!) */
+  -webkit-mask-image: url('../src/assets/logoheader.png') !important;
+          mask-image: url('../src/assets/logoheader.png') !important;
+  -webkit-mask-repeat: no-repeat !important;
+          mask-repeat: no-repeat !important;
+  -webkit-mask-position: left center !important;
+          mask-position: left center !important;
+  -webkit-mask-size: contain !important;
+          mask-size: contain !important;
+
+  /* на всякий случай */
+  border: 0 !important; box-shadow: none !important; border-radius: 0 !important;
+}
+html.theme-dark .brand__logo{ background-color:#fff !important; }
+
+/* Фолбэк, если mask не поддерживается/файл не загрузился */
+@supports not (-webkit-mask-image: url("")) {
+  .brand__logo{
+    background: url('../src/assets/logoheader.png') left center / contain no-repeat !important;
+    background-color: transparent !important;
+  }
+  html.theme-dark .brand__logo{ filter: invert(1) brightness(1.2); }
+}
+
+/* ===== FIX 2: proof/pay карточки должны быть светлыми в светлой теме ===== */
+@media (max-width: 560px){
+  html:not(.theme-dark) .proof__card,
+  html:not(.theme-dark) .pay,
+  html:not(.theme-dark) .payIcons,
+  html:not(.theme-dark) .graduatesCard{
+    background: linear-gradient(180deg,#ffffff 0%,#f6fbf9 100%) !important;
+    color:#0e2c2a !important;
+    border:1px solid #e8eeef !important;
+    box-shadow:0 10px 28px rgba(16,24,40,.06) !important;
+  }
+
+  /* в тёмной теме — остаются тёмными */
+  html.theme-dark .proof__card,
+  html.theme-dark .pay,
+  html.theme-dark .payIcons,
+  html.theme-dark .graduatesCard{
+    background: linear-gradient(180deg,#151a20,#101418) !important;
+    border:1px solid #1e262e !important;
+    box-shadow:0 8px 22px rgba(0,0,0,.28) !important;
+  }
+}
+
+/* ===== Доп.: мобилка HOW — чтобы офлайн/онлайн не накладывались ===== */
+@media (max-width:640px){
+  .how .dual--compact{ grid-template-columns:1fr !important; gap:14px !important; }
+  .how .format__card{ transform:none !important; }
+  .how .fadeWrap{ position:relative; }
+  .how .fadeScene{ position:relative; inset:auto; display:none; opacity:0; transform:none; }
+  .how .fadeScene.active{ display:block; opacity:1; }
+}
+
+/* Light only: тексты в "почему мы" и трех карточках со звёздами/выпускниками/оплатой — чёрные */
+html:not(.theme-dark) .benefitCard__title,
+html:not(.theme-dark) .benefitCard__text,
+html:not(.theme-dark) .proof__card,
+html:not(.theme-dark) .proof__card .p,
+html:not(.theme-dark) .proof__card p,
+html:not(.theme-dark) .proof__label,
+html:not(.theme-dark) .guardText {
+  color:#111 !important;
+  opacity:1 !important; /* на случай, если где-то снижена прозрачность */
+}
+
+

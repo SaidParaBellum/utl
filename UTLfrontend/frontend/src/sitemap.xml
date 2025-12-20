@@ -1,0 +1,15 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://your-domain.tld/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://your-domain.tld/"/>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://your-domain.tld/uz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://your-domain.tld/"/>
+  </url>
+  <url>
+    <loc>https://your-domain.tld/uz</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://your-domain.tld/"/>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://your-domain.tld/uz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://your-domain.tld/"/>
+  </url>
+</urlset>
