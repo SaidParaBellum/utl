@@ -633,10 +633,10 @@ export default function App() {
               <div className="proof__card proof__card--guard">
                 <div className="guardRow">
                   <div className="payIcons">
-                    <img className="payIcon" src="/src/assets/uzcard.jpg" alt="Uzcard" />
-                    <img className="payIcon" src="/src/assets/humo.png" alt="Humo" />
-                    <img className="payIcon" src="/src/assets/Visa.png" alt="Visa" />
-                    <img className="payIcon" src="/src/assets/mastercard.png" alt="Mastercard" />
+                    <img className="payIcon" src="/uzcard.jpg" alt="Uzcard" />
+                    <img className="payIcon" src="/humo.png" alt="Humo" />
+                    <img className="payIcon" src="/Visa.png" alt="Visa" />
+                    <img className="payIcon" src="/mastercard.png" alt="Mastercard" />
                   </div>
                   <div className="proof__label guardText">{t("proof.guarantee")}</div>
                 </div>
@@ -725,7 +725,7 @@ export default function App() {
                 <div className="scene scene--split">
                   <div className="logiAura" aria-hidden />
                   <div className="logiSplit">
-                    <div className="logiPhoto" style={{ backgroundImage: "url('/src/assets/lighttg.jpg')" }} aria-label="Фото рейса">
+                    <div className="logiPhoto" style={{ backgroundImage: "url('/lighttg.jpg')" }} aria-label="Фото рейса">
                       <div className="photoBadge">UTL</div>
                     </div>
                     <ul className="logiChat" aria-live="polite">
@@ -741,7 +741,7 @@ export default function App() {
               <div className={`fadeScene ${howIdx === 3 ? "active" : ""}`}>
                 <div className="scene">
                   <div className="certificateCard">
-                    <img src="/src/assets/certificate2.png" alt={lang === "uz" ? "Davlat namunasi sertifikati" : "Сертификат государственного образца"} />
+                    <img src="/certificate2.png" alt={lang === "uz" ? "Davlat namunasi sertifikati" : "Сертификат государственного образца"} />
                   </div>
                 </div>
               </div>
@@ -779,39 +779,40 @@ export default function App() {
 
       {/* TESTIMONIALS */}
       <section id="testimonials" className="section">
-        <div className="container">
-          <h2 className="h2">{t("section.testimonials")}</h2>
-          <div ref={scrollRef} className="scroll-x carousel" style={{ marginTop: 6 }}>
-            {testimonials.map((tst, i) => (
-              <div key={i} className={`card tcard ${tst.videoId ? "tcard--video" : ""}`}>
-                <div className="card__tag">{tst.tag}</div>
+  <div className="container">
+    <h2 className="h2">{t("section.testimonials")}</h2>
 
-                {tst.videoId ? (
-                  <a
-                    href={`https://youtu.be/${tst.videoId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: "block", borderRadius: 12, overflow: "hidden", marginTop: 8 }}
-                    aria-label="Открыть видео-отзыв на YouTube"
-                  >
-                    <img
-                      src={`https://img.youtube.com/vi/${tst.videoId}/hqdefault.jpg`}
-                      alt="Видео-отзыв"
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                      loading="lazy"
-                    />
-                  </a>
-                ) : (
-                  <>
-                    <p className="p" style={{ marginTop: 6, minHeight: 72 }}>«{tst.text}»</p>
-                    <div className="testimonial__name">{tst.name}</div>
-                  </>
-                )}
-              </div>
-            ))}
+    <div
+      ref={scrollRef}
+      className="scroll-x carousel"
+      style={{ marginTop: 6 }}
+    >
+      {testimonials.map((tst, i) => (
+        <div key={i} className="card tcard">
+          <div className="card__tag">{tst.tag}</div>
+
+          <p
+            className="p"
+            style={{
+              marginTop: 6,
+              minHeight: 72,
+              color: "#e5e7eb" // светлый текст на тёмном фоне
+            }}
+          >
+            «{tst.text}»
+          </p>
+
+          <div
+            className="testimonial__name"
+            style={{ color: "#ffffff", marginTop: 8 }}
+          >
+            {tst.name}
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* FAQ */}
       <section id="faq" className="section faqWrap withRouteBG">
