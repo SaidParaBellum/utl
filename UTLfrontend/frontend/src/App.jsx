@@ -621,10 +621,10 @@ export default function App() {
 
               <div className="proof__card">
                 <div className="avatars">
-                  <img src="/src/assets/ava1.webp" alt="" />
-                  <img src="/src/assets/ava2.jpg" alt="" />
-                  <img src="/src/assets/ava3.jpg" alt="" />
-                  <img src="/src/assets/ava4.jpg" alt="" />
+                  <img src="/ava1.webp" alt="" />
+                  <img src="/ava2.jpg" alt="" />
+                  <img src="/ava3.jpg" alt="" />
+                  <img src="/ava4.jpg" alt="" />
                   <span className="avatars__more">+150</span>
                 </div>
                 <div className="proof__label">{t("proof.alumni")}</div>
